@@ -65,7 +65,18 @@ def check_collision(dino, obstacles):
     #write ur own logic here
 
 def spawn_obstacle():
-    #write ur own logic here, you can use random module for random choice
+    obstacle_type = random.choice(['cactus', 'bird'])
+    if obstacle_type == 'cactus':
+        return {
+            'rect': CACTUS.get_rect(midbottom=(WIDTH + random.randint(100, 200), GROUND_HEIGHT)), #spawing obstacle at random width
+            'type': 'cactus'
+        }
+    else:
+        return {
+            'rect': BIRD.get_rect(midleft=(WIDTH + random.randint(200, 500), 
+                                           random.randint(GROUND_HEIGHT - 120, GROUND_HEIGHT - 60))), #spawing obstacle at random width and and height betweeen 2
+            'type': 'bird'
+        }
 
 while True:
     for event in pygame.event.get():
